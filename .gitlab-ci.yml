@@ -1,0 +1,22 @@
+image: ubuntu:18.04
+
+stages:
+  - run
+  - deploy
+
+run:
+  stage: run
+  script:
+  - apt-get update > /dev/null && apt-get install -y clang ghc netpbm optipng python zopfli > /dev/null
+  - ./runall
+  artifacts:
+    paths:
+    - results
+
+pages:
+  stage: deploy
+  script:
+  - mv results public
+  artifacts:
+    paths:
+    - public

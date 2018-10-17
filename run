@@ -1,0 +1,61 @@
+#!/bin/bash
+
+states='2'
+symmetry='none'
+
+while getopts HCx:i:c:s: option; do
+	case $option in
+		H) runhs='true';;
+		C) runc='true';;
+		x) size=$OPTARG;;
+		i) tilesize=$OPTARG; runimages='true';;
+		c) states=$OPTARG;;
+		s) symmetry=$OPTARG;;
+	esac
+done
+
+runname=${size}x${size}_${states}
+if [ $symmetry != none ]; then runname+=_${symmetry}; fi
+
+echo
+echo
+echo $runname
+
+mkdir -p bin
+mkdir -p results/$runname
+
+if [ "$runc" ]; then
+	clang tiles.c -O2 -flto -o bin/${runname}_c -DSIZE=$size -DSTATES=$states -D$symmetry
+	echo Running C...
+	time ./bin/${runname}_c  > results/$runname/results_c
+	resultsfile="results/$runname/results_c"
+fi
+
+if [ "$runhs" ]; then
+	ghc tiles.hs -v0 -O2 -o bin/${runname}_hs -cpp -DSIZE=$size -DSTATES=$states -D$symmetry
+	echo Running Haskell...
+	time ./bin/${runname}_hs > results/$runname/results_hs
+	resultsfile="results/$runname/results_hs"
+fi
+
+if [ "$runc" -a "$runhs" ]; then
+	diff results/$runname/results_c results/$runname/results_hs -q
+fi
+
+cp $resultsfile results/$runname/results
+
+if [ "$runimages" ]; then
+	echo Rendering images...
+	time (cat results/$runname/results | while read count tile; do
+		echo P2 $size $size $((states-1)) $(echo $tile | sed 's/./& /g') | pnmtile $tilesize $tilesize > "results/$runname/$tile.pgm"
+		optipng -o7 -strip all -fix -quiet results/$runname/$tile.pgm
+		zopflipng results/$runname/$tile.png results/$runname/$tile.png -y > /dev/null
+		rm results/$runname/$tile.pgm
+	done)
+
+	title="${size}x${size} "
+	if [ $states != 2 ]; then title+="${states}-state "; fi
+	if [ $symmetry != none ]; then title+="$symmetry "; fi
+	title+="patterns"
+	cat results/$runname/results | sort -k 2 -r | sort -k 1,1 -n -s | ./makehtml.py "$title" $((tilesize*2)) > results/$runname/index.html
+fi

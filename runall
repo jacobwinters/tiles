@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Regular
+./run -HC -x2 -i32
+./run -HC -x3 -i30
+./run -HC -x4 -i32
+./run -C  -x5
+
+# 3-state
+./run -HC -x2 -i32 -c3
+./run -HC -x3 -i30 -c3
+./run -C  -x4      -c3
+
+# Brick
+./run -HC -x2 -i32 -sbrick
+./run -HC -x4 -i32 -sbrick
+./run -H  -x6 -i36 -sbrick
+
+# 3-state brick
+./run -HC -x2 -i32 -c3 -sbrick
+./run -HC -x4 -i32 -c3 -sbrick
