@@ -6,7 +6,7 @@ You can [see the results in your browser](#results) or [download the raw data](h
 ## What do you mean by "distinct patterns?"
 An image with one black pixel in the bottom right is distinct from an image with one black pixel in the top left, but they produce identical results when tiled:
 
-<img src="https://jacobwinters.gitlab.io/tiles/4x4_2/1111111111111110.png">
+<img src="https://jacobwinters.com/tiled-patterns/results/4x4_2/1111111111111110.png">
 
 In general, if one image is a translation of another, the two images will produce identical tilings.
 
@@ -29,15 +29,15 @@ A pattern has brick-like symmetry when the bottom half of a tile is the top half
 
 These patterns have brick-like symmetry:
 
-<img src="https://jacobwinters.gitlab.io/tiles/4x4_2_brick/1111100011110010.png">
-<img src="https://jacobwinters.gitlab.io/tiles/4x4_2_brick/1100110000110011.png">
-<img src="https://jacobwinters.gitlab.io/tiles/4x4_2_brick/1100100100110110.png">
+<img src="https://jacobwinters.com/tiled-patterns/results/4x4_2_brick/1111100011110010.png">
+<img src="https://jacobwinters.com/tiled-patterns/results/4x4_2_brick/1100110000110011.png">
+<img src="https://jacobwinters.com/tiled-patterns/results/4x4_2_brick/1100100100110110.png">
 
 These patterns don't:
 
-<img src="https://jacobwinters.gitlab.io/tiles/4x4_2/1111110011110010.png">
-<img src="https://jacobwinters.gitlab.io/tiles/4x4_2/1111110000000011.png">
-<img src="https://jacobwinters.gitlab.io/tiles/4x4_2/1110110101111011.png">
+<img src="https://jacobwinters.com/tiled-patterns/results/4x4_2/1111110011110010.png">
+<img src="https://jacobwinters.com/tiled-patterns/results/4x4_2/1111110000000011.png">
+<img src="https://jacobwinters.com/tiled-patterns/results/4x4_2/1110110101111011.png">
 
 ## Running
 The project comes with a shell script that will:
@@ -62,17 +62,17 @@ There is also a `runall` script that tries a variety of parameters. This is the 
 A pattern from each equivalence class is displayed. The equivalence classes are sorted by the number of distinct images that produce patterns belonging to them.
 
 Listed from most to least interesting:
-* [6x6 2-state brick](https://jacobwinters.gitlab.io/tiles/6x6_2_brick/)
-* [4x4 2-state](https://jacobwinters.gitlab.io/tiles/4x4_2/)
-* [4x4 2-state brick](https://jacobwinters.gitlab.io/tiles/4x4_2_brick/)
-* [4x4 3-state brick](https://jacobwinters.gitlab.io/tiles/4x4_3_brick/)
-* [3x3 2-state](https://jacobwinters.gitlab.io/tiles/3x3_2/)
-* [3x3 3-state](https://jacobwinters.gitlab.io/tiles/3x3_3/)
-* [2x2 2-state](https://jacobwinters.gitlab.io/tiles/2x2_2/)
-* [2x2 2-state brick](https://jacobwinters.gitlab.io/tiles/2x2_2_brick/)
-* [2x2 3-state](https://jacobwinters.gitlab.io/tiles/2x2_3/)
-* [2x2 3-state brick](https://jacobwinters.gitlab.io/tiles/2x2_3_brick/)
+* [6x6 2-state brick](https://jacobwinters.com/tiled-patterns/results/6x6_2_brick/)
+* [4x4 2-state](https://jacobwinters.com/tiled-patterns/results/4x4_2/)
+* [4x4 2-state brick](https://jacobwinters.com/tiled-patterns/results/4x4_2_brick/)
+* [4x4 3-state brick](https://jacobwinters.com/tiled-patterns/results/4x4_3_brick/)
+* [3x3 2-state](https://jacobwinters.com/tiled-patterns/results/3x3_2/)
+* [3x3 3-state](https://jacobwinters.com/tiled-patterns/results/3x3_3/)
+* [2x2 2-state](https://jacobwinters.com/tiled-patterns/results/2x2_2/)
+* [2x2 2-state brick](https://jacobwinters.com/tiled-patterns/results/2x2_2_brick/)
+* [2x2 3-state](https://jacobwinters.com/tiled-patterns/results/2x2_3/)
+* [2x2 3-state brick](https://jacobwinters.com/tiled-patterns/results/2x2_3_brick/)
 
 There are also some runs that produce too many images to make a gallery, but you can download the raw data if you want to:
-* [5x5 2-state](https://jacobwinters.gitlab.io/tiles/5x5_2/results)
-* [4x4 3-state](https://jacobwinters.gitlab.io/tiles/4x4_3/results)
+* [5x5 2-state](https://jacobwinters.com/tiled-patterns/results/5x5_2/results)
+* [4x4 3-state](https://jacobwinters.com/tiled-patterns/results/4x4_3/results)

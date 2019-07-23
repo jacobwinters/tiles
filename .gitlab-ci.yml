@@ -12,11 +12,3 @@ run:
   artifacts:
     paths:
     - results
-
-pages:
-  stage: deploy
-  script:
-  - mv results public
-  artifacts:
-    paths:
-    - public
